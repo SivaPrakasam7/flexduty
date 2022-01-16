@@ -2,8 +2,10 @@
   "name": "flexduty",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
+    "build:dev":"vite build --mode developement",
+    "build:prod":"vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {
