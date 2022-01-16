@@ -4,8 +4,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "build:dev":"vite build --mode developement",
-    "build:prod":"vite build --mode production",
+    "build:dev": "vite build --mode developement",
+    "build:prod": "vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,12 +17,15 @@
     "axios": "^0.24.0",
     "faker": "^6.6.6",
     "firebase": "^9.6.3",
+    "formik": "^2.2.9",
+    "formik-mui": "^4.0.0-alpha.3",
     "notistack": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-query": "^3.34.8",
     "react-router-dom": "^6.2.1",
-    "reactfire": "^4.2.1"
+    "reactfire": "^4.2.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^17.0.33",

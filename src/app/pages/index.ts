@@ -1,1 +1,1 @@
-export * from "./sample";
+export * as Account from "./account";

@@ -1,1 +1,1 @@
-export * from "./sample";
+export * as Auth from "./auth";
