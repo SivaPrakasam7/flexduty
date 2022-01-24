@@ -20,7 +20,7 @@ export const AppBar = () => {
         </Mui.Typography>
         <Mui.Box flexGrow={1} />
         <Mui.Box sx={{ display: { md: "none" } }}>
-          <Layouts.Main.Views.SearchField />
+          {auth?.data?.signedIn && <Layouts.Main.Views.SearchField />}
         </Mui.Box>
         <Mui.Stack
           direction="row"
