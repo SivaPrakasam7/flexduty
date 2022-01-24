@@ -15,9 +15,9 @@ export const ThemeSwitch = () => {
       }}
     >
       {mode ? (
-        <MuiIcons.LightMode color="primary" />
+        <MuiIcons.LightMode color="primary" fontSize="inherit" />
       ) : (
-        <MuiIcons.DarkMode color="primary" />
+        <MuiIcons.DarkMode color="primary" fontSize="inherit" />
       )}
     </Mui.IconButton>
   );

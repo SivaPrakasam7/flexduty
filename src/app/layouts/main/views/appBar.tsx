@@ -8,6 +8,7 @@ export const AppBar = () => {
   return (
     <Mui.AppBar sx={{ bgcolor: "background.default" }}>
       <Mui.Toolbar component={Mui.Stack} direction="row" spacing={1}>
+        <Layouts.Main.Views.MenuButton />
         <Mui.Typography
           component={Router.Link}
           variant="h5"
@@ -18,12 +19,15 @@ export const AppBar = () => {
           FlexDuty
         </Mui.Typography>
         <Mui.Box flexGrow={1} />
-        {auth?.data?.signedIn ? (
-          <Layouts.Main.Views.Profile click />
-        ) : (
-          <Layouts.Main.Views.LoginJoin />
-        )}
-        <Layouts.Main.Views.ThemeSwitch />
+        <Layouts.Main.Views.SearchField />
+        <Mui.Box sx={{ display: { xs: "none", md: "block" } }}>
+          {auth?.data?.signedIn ? (
+            <Layouts.Main.Views.Profile click />
+          ) : (
+            <Layouts.Main.Views.LoginJoin />
+          )}
+          <Layouts.Main.Views.ThemeSwitch />
+        </Mui.Box>
       </Mui.Toolbar>
     </Mui.AppBar>
   );

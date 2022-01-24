@@ -6,7 +6,8 @@
     "build": "tsc && vite build",
     "build:dev": "vite build --mode developement",
     "build:prod": "vite build --mode production",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy":"firebase deploy"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
