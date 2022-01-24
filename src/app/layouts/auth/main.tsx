@@ -2,22 +2,14 @@ import * as Mui from "@mui/material";
 import * as Router from "react-router-dom";
 
 export const Main = () => (
-  <Mui.Stack
+  <Mui.Box
+    component={Mui.Stack}
     alignItems="center"
-    justifyContent="center"
-    spacing={2}
-    sx={{ height: "100vh" }}
+    justifyContent="start"
+    sx={{ height: "100vh", width: "100%", mt: 10 }}
   >
-    <Mui.Card sx={{ minHeight: 350, maxWidth: 350, width: "100%" }}>
+    <Mui.Paper component={Mui.Container} maxWidth="xs">
       <Router.Outlet />
-    </Mui.Card>
-    <Mui.ButtonGroup>
-      <Mui.Button component={Router.Link} to="signin">
-        SignIn
-      </Mui.Button>
-      <Mui.Button component={Router.Link} to="signup">
-        SignUp
-      </Mui.Button>
-    </Mui.ButtonGroup>
-  </Mui.Stack>
+    </Mui.Paper>
+  </Mui.Box>
 );

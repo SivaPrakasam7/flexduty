@@ -1,23 +1,18 @@
 /// <reference types="vite/client" />
 
-// ENV configurations
-
 interface ImportMetaEnv {
-  readonly VITE_FIREBASE_API_KEY: string;
-  readonly VITE_FIREBASE_AUTH_DOMAIN: string;
-  readonly VITE_FIREBASE_PROJECTID: string;
-  readonly VITE_FIREBASE_STORAGE_BUCKET: string;
-  readonly VITE_FIREBASE_MESSAGING_SENDERID: string;
-  readonly VITE_FIREBASE_APPID: string;
+  readonly VITE_API_KEY: string;
+  readonly VITE_AUTH_DOMAIN: string;
+  readonly VITE_PROJECT_ID: string;
+  readonly VITE_STORAGE_BUCKET: string;
+  readonly VITE_MESSAGING_SENDER_ID: string;
+  readonly VITE_APP_ID: string;
 }
 
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
-// Common typings
-declare namespace common {
-  export interface Child {
-    children: React.ReactNode;
-  }
+interface Child {
+  children: React.ReactNode;
 }

@@ -1,0 +1,20 @@
+FlexDuty
+--------
+
+Goal and Description:
+    1. Reduce unemployment and flexible work for all people. It's not only technical people and educated people, It's support all of us in our world to encourage jobs when we need.
+It hasn't any deal and contracts, People can make our own career destiny.
+    2. Job post and Job search for all type of people.
+    3. Some fixed range of salary for different work.
+    4. Know different workers and Jobs for required people in our comfortable range in map.
+    5. People can post a job and our skills in profile.
+    6. Get ratings for all people to our work status and our client status.
+    7. Increase our range of salary for depending our ratings.
+    8. Weekly winners based on our ratings gets increase of our salary range.
+    9. Save our favirote workers and clients. They can chat with each others.
+    10. Workers can set referal rewards for our cleints.
+    11. People can share our exprience in our platform.
+    12. This platform doesn't support scam, so it's had a reporting facility. It should decrease people ratings.
+    13. People make payment in online platform through this platform.
+    14. People tip together for our good work.
+

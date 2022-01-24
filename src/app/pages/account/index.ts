@@ -1,4 +1,4 @@
-export * as Reset from "./reset-password";
-export * as Forget from "./forget-password";
-export * as SignIn from "./signin";
-export * as SignUp from "./signup";
+export * as ForgetPassword from "./forget-password";
+export * as Login from "./login";
+export * as Register from "./register";
+export * as ResetPassword from "./reset-password";

@@ -1,24 +1,27 @@
 import * as Mui from "@mui/material";
+import * as Router from "react-router-dom";
 import * as Components from "src/app/components";
 
 export const Content = () => (
-  <Mui.CardContent component={Mui.Stack} alignItems="center" spacing={3}>
-    <Mui.Typography variant="h5">Sign In</Mui.Typography>
-    <Mui.Typography variant="subtitle1" color="text.secondary">
-      Please sign in to see your profile
+  <Mui.CardContent component={Mui.Stack}>
+    <Mui.Typography variant="h4" color="primary">
+      Reset Password
     </Mui.Typography>
-    <Components.FormField
+    <Components.Fields.FormField
       type="password"
       name="password"
       label="New Password"
-      placeholder="Enter your password"
+      placeholder="Enter new password"
+      size="small"
     />
-    <Components.FormField
+    <Components.Fields.FormField
       type="password"
       name="confirmPassword"
       label="Confirm Password"
-      placeholder="Enter your password"
+      placeholder="Re-enter password"
+      size="small"
     />
-    <Components.FormButton>Change Password</Components.FormButton>
+    <Components.SubmitButton>Change Password</Components.SubmitButton>
+    <Router.Outlet />
   </Mui.CardContent>
 );

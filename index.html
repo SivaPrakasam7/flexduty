@@ -5,11 +5,29 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlexDuty</title>
+  <title>FlexDuty Main</title>
+  <style>
+    .logoText{
+      position: absolute;
+      top:40%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      font-size: 50px;
+      color:#00c853;
+      text-shadow: 0 1px 0 #00c85340, 0 2px 0 #00c85340,
+                0 3px 0 #00c85340, 0 4px 0 #00c85340,
+                0 5px 0 #00c85340, 0 6px 0 #00c85340,
+                0 7px 0 #00c85340, 0 8px 0 #00c85340,
+                0 9px 0 #00c85340, 0 10px 0 #00c85340,
+                0 20px 30px rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <h1 class="logoText">FlexDuty</h1>
+  </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

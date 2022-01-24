@@ -3,9 +3,9 @@ node_modules
 dist
 dist-ssr
 *.local
-docs
 package-lock.json
 .env
 .env.*
 .firebase
 .github
+.Trash-*/
