@@ -8,6 +8,20 @@ export const Main = () => (
     justifyContent="start"
     sx={{ height: "100vh", width: "100%", mt: 10 }}
   >
+    <Mui.Typography
+      component={Router.Link}
+      variant="h5"
+      color="primary"
+      to="/"
+      sx={{
+        textDecoration: "none",
+        position: "fixed",
+        top: 10,
+        left: 10,
+      }}
+    >
+      FlexDuty
+    </Mui.Typography>
     <Mui.Paper component={Mui.Container} maxWidth="xs">
       <Router.Outlet />
     </Mui.Paper>

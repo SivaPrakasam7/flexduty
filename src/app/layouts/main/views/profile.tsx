@@ -22,7 +22,7 @@ export const Profile = ({ click }: { click?: boolean }) => {
 
   return (
     <>
-      <Mui.IconButton onClick={handleClick}>
+      <Mui.IconButton disableRipple onClick={handleClick}>
         <Mui.Avatar src={user?.photoURL || ""}>
           {user?.displayName?.at(0)}
         </Mui.Avatar>
