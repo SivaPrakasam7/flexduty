@@ -19,15 +19,25 @@ export const AppBar = () => {
           FlexDuty
         </Mui.Typography>
         <Mui.Box flexGrow={1} />
-        <Layouts.Main.Views.SearchField />
-        <Mui.Box sx={{ display: { xs: "none", md: "block" } }}>
+        <Mui.Box sx={{ display: { md: "none" } }}>
+          <Layouts.Main.Views.SearchField />
+        </Mui.Box>
+        <Mui.Stack
+          direction="row"
+          spacing={1}
+          alignItems="center"
+          sx={{ display: { xs: "none", md: "flex" } }}
+        >
           {auth?.data?.signedIn ? (
-            <Layouts.Main.Views.Profile click />
+            <>
+              <Layouts.Main.Views.SearchField />
+              <Layouts.Main.Views.Profile click />
+            </>
           ) : (
             <Layouts.Main.Views.LoginJoin />
           )}
           <Layouts.Main.Views.ThemeSwitch />
-        </Mui.Box>
+        </Mui.Stack>
       </Mui.Toolbar>
     </Mui.AppBar>
   );
