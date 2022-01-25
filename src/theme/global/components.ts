@@ -43,5 +43,22 @@ export const Components = (): Pick<Mui.ThemeOptions, "components"> => ({
         },
       },
     },
+    MuiCardMedia: {
+      styleOverrides: {
+        root: {
+          minWidth: "100%",
+          minHeight: "100%",
+          objectFit: "cover",
+        },
+      },
+    },
+    MuiLinearProgress: {
+      styleOverrides: {
+        root: {
+          width: "100%",
+          borderRadius: 5,
+        },
+      },
+    },
   },
 });

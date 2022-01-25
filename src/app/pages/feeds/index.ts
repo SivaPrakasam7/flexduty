@@ -1,3 +1,3 @@
 export * as Views from "./views";
-export * from "./main";
-export * from "./route";
+export * as Duty from "./duty";
+export * as Skill from "./skill";

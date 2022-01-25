@@ -18,3 +18,16 @@ It hasn't any deal and contracts, People can make our own career destiny.
     13. People make payment in online platform through this platform.
     14. People tip together for our good work.
 
+
+schema
+------
+
+    1. Duty feed:
+        {
+            title:string;
+            subtitle:string;
+            content:string;
+            variant:"duty"|"skill";
+            username:string;
+            profile:string;
+        }

@@ -3,30 +3,31 @@ import * as MuiIcons from "@mui/icons-material";
 import * as React from "react";
 import * as ReactFire from "reactfire";
 import * as Router from "react-router-dom";
+import * as Layouts from "src/app/layouts";
 
-export const Profile = ({ click }: { click?: boolean }) => {
-  const { data: user } = ReactFire.useUser();
+export const Profile = () => {
   const auth = ReactFire.useAuth();
-  const navigate = Router.useNavigate();
+  const isMobile = Mui.useMediaQuery(Mui.useTheme().breakpoints.down("sm"));
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) =>
-    click && setAnchorEl(e.currentTarget);
+    isMobile || setAnchorEl(e.currentTarget);
 
   const handleClose = () => setAnchorEl(null);
-
-  const handleLogout = async () => {
-    await auth.signOut();
-    navigate("/");
-  };
 
   return (
     <>
       <Mui.IconButton disableRipple onClick={handleClick}>
-        <Mui.Avatar src={user?.photoURL || ""}>
-          {user?.displayName?.at(0)}
+        <Mui.Avatar src={auth?.currentUser?.photoURL || ""}>
+          {auth?.currentUser?.displayName?.at(0)}
         </Mui.Avatar>
       </Mui.IconButton>
+      <Mui.Typography
+        variant="h6"
+        sx={{ display: isMobile ? "block" : "none" }}
+      >
+        {auth?.currentUser?.displayName}
+      </Mui.Typography>
       <Mui.Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
@@ -59,16 +60,15 @@ export const Profile = ({ click }: { click?: boolean }) => {
           <Mui.ListItemIcon>
             <MuiIcons.Person />
           </Mui.ListItemIcon>
-          {user?.displayName}
+          {auth?.currentUser?.displayName}
         </Mui.MenuItem>
-        <Mui.MenuItem onClick={handleLogout}>
+        <Mui.MenuItem component={Router.Link} to="/settings">
           <Mui.ListItemIcon>
-            <MuiIcons.Logout fontSize="small" sx={{ color: "error.main" }} />
+            <MuiIcons.Settings />
           </Mui.ListItemIcon>
-          <Mui.Typography variant="body2" color="error">
-            Logout
-          </Mui.Typography>
+          Settings
         </Mui.MenuItem>
+        <Layouts.Main.Views.Logout />
       </Mui.Menu>
     </>
   );

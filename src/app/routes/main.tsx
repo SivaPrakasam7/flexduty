@@ -14,6 +14,14 @@ export const Main = () =>
           element: <Pages.Home.Main />,
         },
         {
+          path: "duty/*",
+          element: <Pages.Feeds.Duty.Route />,
+        },
+        {
+          path: "skill/*",
+          element: <Pages.Feeds.Skill.Route />,
+        },
+        {
           path: "/*",
           element: (
             <Routes.Private protect>
@@ -22,20 +30,12 @@ export const Main = () =>
           ),
           children: [
             {
-              path: "feeds/*",
-              element: <Pages.Feeds.Route />,
-            },
-            {
               path: "profile/*",
               element: <Pages.User.Profile.Route />,
             },
             {
-              path: "setting/*",
+              path: "settings/*",
               element: <Pages.User.Settings.Route />,
-            },
-            {
-              path: "skills/*",
-              element: <Pages.User.Skills.Route />,
             },
           ],
         },

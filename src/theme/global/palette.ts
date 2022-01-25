@@ -16,9 +16,6 @@ const CommonPalette = {
 export const PaletteLight = (): Pick<Mui.ThemeOptions, "palette"> => ({
   palette: {
     mode: "light",
-    background: {
-      default: Mui.colors.grey[100],
-    },
     ...CommonPalette,
   },
 });
@@ -28,7 +25,7 @@ export const PaletteDark = (): Pick<Mui.ThemeOptions, "palette"> => ({
     mode: "dark",
     background: {
       default: Mui.colors.indigo["900"],
-      paper: "#ffffff00",
+      paper: "#f6feff05",
     },
     ...CommonPalette,
   },

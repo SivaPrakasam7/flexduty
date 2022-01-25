@@ -1,6 +1,6 @@
 # FlexDuty
 
-It's a pltform for reduce unemployment and fleible work for all people. It's not only tech people and educated people, It's suport all of us in our world to encourage jobs when we need. It hasn't any deal and contracts, People can make our own career destiny.
+It's a platform for reduce unemployment and fleible work for all people. It's not only tech people and educated people, It's suport all of us in our world to encourage jobs when we need. It hasn't any deal and contracts, People can make our own career destiny.
 
 ### Hosting URL: https://flexduty-5a879.web.app
 
