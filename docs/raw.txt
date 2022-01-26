@@ -23,11 +23,98 @@ schema
 ------
 
     1. Duty feed:
-        {
+    user:{
+        uid:string;
+        profile:string;
+        firstName:string;
+        lastName:string;
+        contact:string;
+        email:string;
+        joined:string;
+
+        badge:premium|good|new;
+        performance:string;
+        
+        ratings:{
+            uid:string;
+            profile:string;
+            name:string;
+            comment:string;
+            rating:number;
+        }
+
+        skill:{
+            uid:sttring;
+            profile:string;
+            name:string;
             title:string;
             subtitle:string;
+            categeory:string;
             content:string;
-            variant:"duty"|"skill";
-            username:string;
-            profile:string;
+
+            likes:{
+                uid:string;
+                profile:string;
+                name:string;
+                time:string;
+            }
+
+            followers:{
+                uid:string;
+                profile:string;
+                name:string;
+                time:string;
+            }
+
+            chats:{
+                chatid:{
+                    message:string;
+                    uid:string;
+                    time:string;
+                }
+            }
+
         }
+
+        duty:{
+            uid:string;
+            profile:string;
+            images:string[];
+            name:string;
+            title:string;
+            subtitle:string;
+            categeory:string;
+            content:string;
+            salary:string;
+            time:string;
+            address:string;
+            variant:duty|skill;
+
+            likes:{
+                uid:string;
+                profile:string;
+                name:string;
+                time:string;
+            }
+
+            bookmarks:{
+                uid:string;
+            }
+
+            attenders:{
+                uid:string;
+                profile:string;
+                name:string;
+                time:string;
+            }
+
+            chats:{
+                chatid:{
+                    message:string;
+                    uid:string;
+                    time:string;
+                }
+            }
+
+        }
+    }

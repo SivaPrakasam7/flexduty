@@ -1,18 +1,51 @@
 import * as Mui from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
+import * as React from "react";
 import * as Pages from "src/app/pages";
 import * as Assets from "src/assets";
 
 export const FeedCard = ({ variant }: card.Props) => {
   const isMobile = Mui.useMediaQuery(Mui.useTheme().breakpoints.down("sm"));
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
   return (
     <Mui.Card sx={{ maxHeight: { md: 450 }, maxWidth: "md" }}>
       <Mui.Grid container>
         <Mui.Grid item xs={12} sm={6} sx={{ position: "relative" }}>
-          <Mui.CardMedia component="img" src={Assets.CatImage} />
-          <Pages.Feeds.Views.FeedItems />
+          <Mui.Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{
+              display: { xs: show ? "none" : "flex", sm: "none" },
+              position: "absolute",
+              width: "100%",
+              p: 1,
+              zIndex: 1,
+            }}
+          >
+            <Mui.Typography variant="h6" color="primary" noWrap>
+              Main Title
+            </Mui.Typography>
+            {
+              {
+                duty: <MuiIcons.Work color="primary" />,
+                skill: <MuiIcons.Build color="primary" />,
+              }[variant]
+            }
+          </Mui.Stack>
+          <Mui.CardActionArea disabled={!isMobile} onClick={handleClick}>
+            <Mui.CardMedia component="img" src={Assets.CatImage} />
+          </Mui.CardActionArea>
+          <Pages.Feeds.Views.FeedItems variant={variant} />
         </Mui.Grid>
-        <Mui.CardContent component={Mui.Grid} item xs={12} sm={6}>
+        <Mui.CardContent
+          component={Mui.Grid}
+          item
+          xs={12}
+          sm={6}
+          sx={{ display: { xs: show ? "flex" : "none", sm: "flex" } }}
+        >
           <Mui.Stack spacing={isMobile ? 1 : 2}>
             <Mui.Stack
               direction="row"
@@ -46,19 +79,13 @@ export const FeedCard = ({ variant }: card.Props) => {
               Perferendis ipsa possimus veniam saepe nesciunt quaerat accusamus
               eligendi sint explicabo quo.
             </Mui.Typography>
-            {
-              {
-                duty: (
-                  <Pages.Feeds.Duty.Views.DutyPanel
-                    name="Siva"
-                    amountRange="$100 - 200"
-                    timeRange="10am - 7pm"
-                    address="Some address"
-                  />
-                ),
-                skill: null,
-              }[variant]
-            }
+            <Pages.Feeds.Views.MoreInfo
+              variant={variant}
+              name="Siva"
+              amountRange="$100 - 200"
+              timeRange="10am - 7pm"
+              address="Some address"
+            />
           </Mui.Stack>
         </Mui.CardContent>
       </Mui.Grid>
