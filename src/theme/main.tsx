@@ -7,7 +7,10 @@ export const Main = ({ children }: Child) => {
     localStorage.getItem("theme") === "dark"
   );
 
-  const changeMode = () => setMode(!mode);
+  const changeMode = () => {
+    setMode(!mode);
+    localStorage.setItem("theme", mode ? "light" : "dark");
+  };
 
   const theme = React.useMemo(
     () =>

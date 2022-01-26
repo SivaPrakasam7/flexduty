@@ -41,7 +41,12 @@ export const MenuButton = () => {
         </Mui.Toolbar>
         <Mui.Divider />
         {Constants.MenuItems.map((text, index) => (
-          <Mui.MenuItem key={index} component={Router.Link} to={text}>
+          <Mui.MenuItem
+            key={index}
+            component={Router.Link}
+            to={text}
+            onClick={handleClick}
+          >
             <Mui.Typography
               variant="body1"
               textTransform="capitalize"

@@ -41,9 +41,9 @@ export const DutyInfo = ({
     <Mui.Grid item xs={6}>
       <Components.StackLabel title="Time" value={timeRange} />
     </Mui.Grid>
-    <Mui.Grid item xs={12}>
+    {/* <Mui.Grid item xs={12}>
       <Components.StackLabel title="Address" value={address} />
-    </Mui.Grid>
+    </Mui.Grid> */}
   </Mui.Grid>
 );
 

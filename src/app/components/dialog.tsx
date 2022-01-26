@@ -1,6 +1,7 @@
 import * as Mui from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
 import * as Router from "react-router-dom";
+import * as Hooks from "src/app/hooks";
 
 export const Dialog = ({
   sx,
@@ -8,7 +9,7 @@ export const Dialog = ({
   icon,
   ...props
 }: Partial<Mui.DialogProps> & { icon?: boolean }) => {
-  const isMobile = Mui.useMediaQuery(Mui.useTheme().breakpoints.down("md"));
+  const isMobile = Hooks.useMobile();
   const navigate = Router.useNavigate();
   const handleClose = () => navigate(-1);
   return (

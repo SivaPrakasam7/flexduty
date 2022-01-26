@@ -2,16 +2,24 @@ import * as Mui from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
 import * as React from "react";
 import * as Pages from "src/app/pages";
+import * as Hooks from "src/app/hooks";
 import * as Assets from "src/assets";
 
 export const FeedCard = ({ variant }: card.Props) => {
-  const isMobile = Mui.useMediaQuery(Mui.useTheme().breakpoints.down("sm"));
+  const isMobile = Hooks.useMobile();
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   return (
-    <Mui.Card sx={{ maxHeight: { md: 450 }, maxWidth: "md" }}>
-      <Mui.Grid container>
-        <Mui.Grid item xs={12} sm={6} sx={{ position: "relative" }}>
+    <Mui.Card sx={{ maxHeight: { md: 400 }, maxWidth: "md" }}>
+      <Mui.Grid container maxHeight="inherit">
+        <Mui.Grid
+          item
+          xs={12}
+          sm={6}
+          sx={{ maxHeight: "inherit" }}
+          component={Mui.CardActionArea}
+          onClick={handleClick}
+        >
           <Mui.Stack
             direction="row"
             justifyContent="space-between"
@@ -27,16 +35,19 @@ export const FeedCard = ({ variant }: card.Props) => {
             <Mui.Typography variant="h6" color="primary" noWrap>
               Main Title
             </Mui.Typography>
-            {
+            <Mui.Stack direction="row" spacing={1} justifyContent="center">
+              <Mui.Typography variant="caption" color="primary">
+                Categeory
+              </Mui.Typography>
               {
-                duty: <MuiIcons.Work color="primary" />,
-                skill: <MuiIcons.Build color="primary" />,
-              }[variant]
-            }
+                {
+                  duty: <MuiIcons.Work color="primary" />,
+                  skill: <MuiIcons.Build color="primary" />,
+                }[variant]
+              }
+            </Mui.Stack>
           </Mui.Stack>
-          <Mui.CardActionArea disabled={!isMobile} onClick={handleClick}>
-            <Mui.CardMedia component="img" src={Assets.CatImage} />
-          </Mui.CardActionArea>
+          <Mui.CardMedia component="img" src={Assets.CatImage} />
           <Pages.Feeds.Views.FeedItems variant={variant} />
         </Mui.Grid>
         <Mui.CardContent
@@ -60,7 +71,7 @@ export const FeedCard = ({ variant }: card.Props) => {
                 }[variant]
               }
             </Mui.Stack>
-            <Mui.Divider />
+            {/* <Mui.Divider /> */}
             <Mui.Stack
               direction="row"
               justifyContent="space-between"

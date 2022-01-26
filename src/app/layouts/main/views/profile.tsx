@@ -4,10 +4,11 @@ import * as React from "react";
 import * as ReactFire from "reactfire";
 import * as Router from "react-router-dom";
 import * as Layouts from "src/app/layouts";
+import * as Hooks from "src/app/hooks";
 
 export const Profile = () => {
   const auth = ReactFire.useAuth();
-  const isMobile = Mui.useMediaQuery(Mui.useTheme().breakpoints.down("sm"));
+  const isMobile = Hooks.useMobile();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) =>

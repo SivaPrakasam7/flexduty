@@ -5,7 +5,7 @@ import * as Layouts from "src/app/layouts";
 export const Main = () => (
   <Mui.Box>
     <Layouts.Main.Views.AppBar />
-    <Mui.Container sx={{ pt: 10 }}>
+    <Mui.Container sx={{ py: { xs: 8, md: 10 } }}>
       <Router.Outlet />
     </Mui.Container>
   </Mui.Box>

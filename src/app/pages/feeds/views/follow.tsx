@@ -10,9 +10,9 @@ export const Follow = ({ disabled }: Pick<Mui.IconButtonProps, "disabled">) => {
     <Mui.Box>
       <Mui.IconButton onClick={handleClick} disabled={disabled}>
         {follow ? (
-          <MuiIcons.PersonAddOutlined sx={{ color: Mui.colors.blue[900] }} />
-        ) : (
           <MuiIcons.Person sx={{ color: Mui.colors.blue[900] }} />
+        ) : (
+          <MuiIcons.PersonAddOutlined sx={{ color: Mui.colors.blue[900] }} />
         )}
       </Mui.IconButton>
       <Mui.Typography variant="caption">123</Mui.Typography>
