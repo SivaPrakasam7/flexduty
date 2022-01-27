@@ -8,9 +8,11 @@ export const Main = () => (
     <Providers.FirebaseProvider>
       <Providers.ErrorBoundary>
         <Providers.NotiStackProvider>
-          <Router.BrowserRouter>
-            <Routes.Main />
-          </Router.BrowserRouter>
+          <Providers.DateAdapter>
+            <Router.BrowserRouter>
+              <Routes.Main />
+            </Router.BrowserRouter>
+          </Providers.DateAdapter>
         </Providers.NotiStackProvider>
       </Providers.ErrorBoundary>
     </Providers.FirebaseProvider>

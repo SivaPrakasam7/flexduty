@@ -18,6 +18,7 @@ export const FeedCard = ({ variant }: card.Props) => {
           sm={6}
           sx={{ maxHeight: "inherit" }}
           component={Mui.CardActionArea}
+          disableRipple={!isMobile}
           onClick={handleClick}
         >
           <Mui.Stack

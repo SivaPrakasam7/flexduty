@@ -1,5 +1,6 @@
 import * as Mui from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
+import * as Router from "react-router-dom";
 import * as Components from "src/app/components";
 
 export const SkillInfo = ({ profile = "", name }: skillInfo.Props) => (
@@ -18,7 +19,12 @@ export const SkillInfo = ({ profile = "", name }: skillInfo.Props) => (
         alignItems="center"
         justifyContent="space-between"
       >
-        <Mui.IconButton color="primary" title="Review">
+        <Mui.IconButton
+          color="primary"
+          title="Review"
+          component={Router.Link}
+          to="review"
+        >
           <MuiIcons.RateReview />
         </Mui.IconButton>
         <Mui.IconButton color="primary" title="Message">
@@ -34,7 +40,7 @@ export const SkillInfo = ({ profile = "", name }: skillInfo.Props) => (
             spacing={1}
             sx={{
               bgcolor: "#00000010",
-              height: 100,
+              height: 75,
               p: 1,
               borderRadius: 1,
               overflowY: "auto",

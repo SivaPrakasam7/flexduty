@@ -47,10 +47,10 @@ schema
             uid:sttring;
             profile:string;
             name:string;
+            images:string[];
             title:string;
-            subtitle:string;
             categeory:string;
-            content:string;
+            description:string;
 
             likes:{
                 uid:string;
@@ -79,14 +79,15 @@ schema
         duty:{
             uid:string;
             profile:string;
-            images:string[];
             name:string;
+            images:string[];
             title:string;
-            subtitle:string;
             categeory:string;
-            content:string;
+            description:string;
             salary:string;
-            time:string;
+            starAt:string;
+            endAt:string;
+            createdAt:string;
             address:string;
             variant:duty|skill;
 

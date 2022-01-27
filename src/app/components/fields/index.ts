@@ -4,5 +4,6 @@ export * from "./formLabel";
 export * from "./imageField";
 export * from "./numericField";
 export * from "./phoneField";
+export * from "./rating";
 export * from "./selectField";
 export * from "./textField";

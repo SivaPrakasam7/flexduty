@@ -18,7 +18,12 @@ export const Profile = () => {
 
   return (
     <>
-      <Mui.IconButton disableRipple onClick={handleClick}>
+      <Mui.IconButton
+        disableRipple
+        onClick={handleClick}
+        component={isMobile ? Router.Link : Mui.IconButton}
+        to="profile"
+      >
         <Mui.Avatar src={auth?.currentUser?.photoURL || ""}>
           {auth?.currentUser?.displayName?.at(0)}
         </Mui.Avatar>
@@ -29,6 +34,14 @@ export const Profile = () => {
       >
         {auth?.currentUser?.displayName}
       </Mui.Typography>
+      <Mui.IconButton
+        size="small"
+        component={Router.Link}
+        to="settings"
+        sx={{ display: { md: "none" } }}
+      >
+        <MuiIcons.Settings fontSize="inherit" />
+      </Mui.IconButton>
       <Mui.Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}

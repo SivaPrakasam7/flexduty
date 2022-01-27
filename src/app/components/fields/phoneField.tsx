@@ -6,7 +6,7 @@ import * as Components from "src/app/components";
 import NumberFormat from "react-number-format";
 
 export const PhoneField = ({ label, ...props }: Mui.TextFieldProps) => {
-  const { errors, touched, setFieldValue, getFieldProps } =
+  const { errors, touched, setFieldValue, getFieldProps, ...formikProps } =
     Formik.useFormikContext<{ [key: string]: string }>();
   const [countryCode, setCountryCode] = React.useState(
     getFieldProps(props.name).value?.slice(0, -10) || "+91"
@@ -46,6 +46,7 @@ export const PhoneField = ({ label, ...props }: Mui.TextFieldProps) => {
         <Mui.TextField
           fullWidth
           {...props}
+          {...formikProps}
           error={Boolean(touched[name] && errors[name])}
           InputProps={{
             inputComponent:

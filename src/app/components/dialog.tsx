@@ -20,7 +20,7 @@ export const Dialog = ({
       onClose={handleClose}
       sx={{
         "& .MuiPaper-root": {
-          borderRadius: { xs: props.fullScreen === false ? 5 : 0, md: 5 },
+          borderRadius: { xs: props.fullScreen === false ? 5 : 0, sm: 5 },
           bgcolor: "background.default",
         },
         "& .MuiButton-root": {
@@ -32,7 +32,7 @@ export const Dialog = ({
       {...props}
     >
       {icon && (
-        <Mui.Stack direction="row" justifyContent="end" sx={{ mb: -2 }}>
+        <Mui.Stack direction="row" justifyContent="end" sx={{ mb: -5 }}>
           <Mui.IconButton disableRipple onClick={handleClose}>
             <MuiIcons.Close />
           </Mui.IconButton>

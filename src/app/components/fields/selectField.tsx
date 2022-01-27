@@ -26,6 +26,11 @@ export const MuiSelectField = ({
         fullWidth
         {...FormikMui.fieldToSelect(props)}
       >
+        <Mui.MenuItem value="0" disabled>
+          <Mui.Typography variant="body1" color="text.secondary">
+            Choose
+          </Mui.Typography>
+        </Mui.MenuItem>
         {options.map((value, index) => (
           <Mui.MenuItem key={index} value={value}>
             {value}

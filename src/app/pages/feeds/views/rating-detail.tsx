@@ -1,6 +1,5 @@
 import * as Mui from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
-import * as React from "react";
 import * as Components from "src/app/components";
 
 export const RatingInfo = ({ variant, ...props }: ratingInfo.Props) => (
@@ -10,15 +9,14 @@ export const RatingInfo = ({ variant, ...props }: ratingInfo.Props) => (
         title="Overall Ratings(356)"
         value={
           <Mui.Stack direction="row" spacing={1}>
-            {new Array(5)
-              .fill(undefined)
-              .map((value, index) =>
-                index < 3 ? (
-                  <MuiIcons.Star color="primary" key={index} />
-                ) : (
-                  <MuiIcons.StarBorder color="primary" key={index} />
-                )
-              )}
+            {new Array(5).fill(undefined).map((_val, index) => (
+              <MuiIcons.HandymanRounded
+                key={index}
+                sx={{
+                  color: 3 > index ? "primary.main" : Mui.colors.grey[500],
+                }}
+              />
+            ))}
           </Mui.Stack>
         }
       />

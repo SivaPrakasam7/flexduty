@@ -1,5 +1,6 @@
 import * as Mui from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
+import * as Router from "react-router-dom";
 import * as Components from "src/app/components";
 
 export const DutyInfo = ({
@@ -24,7 +25,12 @@ export const DutyInfo = ({
         alignItems="center"
         justifyContent="space-between"
       >
-        <Mui.IconButton color="primary" title="Review">
+        <Mui.IconButton
+          color="primary"
+          title="Review"
+          component={Router.Link}
+          to="review"
+        >
           <MuiIcons.RateReview />
         </Mui.IconButton>
         <Mui.IconButton color="primary" title="Request">
