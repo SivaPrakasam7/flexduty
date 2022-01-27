@@ -7,5 +7,6 @@ export const Main = () => (
     <Router.Route path="/" element={<Layouts.Smaple />}>
       <Router.Route index element={<Pages.Smaple />} />
     </Router.Route>
+    {console.log("ok")}
   </Router.Routes>
 );
