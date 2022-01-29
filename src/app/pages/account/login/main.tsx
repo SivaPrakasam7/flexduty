@@ -35,17 +35,20 @@ export const Main = () => {
   ) => {
     try {
       if (mode && mode === "verifyEmail") {
-        await Axios.default
+        const check = await Axios.default
           .post(
             `https://identitytoolkit.googleapis.com/v1/accounts:update?key=${apiKey}`,
             { oobCode }
           )
           .then(() => {
             console.log("Email Verified");
+            return true;
           })
-          .catch(() =>
-            enqueueSnackbar("Invalid verification link", { variant: "error" })
-          );
+          .catch(() => {
+            enqueueSnackbar("Invalid verification link", { variant: "error" });
+            return false;
+          });
+        if (check) return;
       }
       const { user } = await FirebaseAuth.signInWithEmailAndPassword(
         secondaryAuth,

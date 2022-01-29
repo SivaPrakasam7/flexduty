@@ -16,8 +16,9 @@ export const ImageSelector = ({
   sx,
   label,
   hide,
+  multiple,
 }: image.Props & Mui.CardMediaProps) => {
-  const { setFieldValue, values, errors, touched } =
+  const { setFieldValue, values, errors, touched, isSubmitting } =
     Formik.useFormikContext<{ [key: string]: string }>();
   const handleOnChange = async (e: React.FormEvent<HTMLInputElement>) =>
     setFieldValue(
@@ -32,7 +33,9 @@ export const ImageSelector = ({
     >
       <Mui.Box sx={{ width: "100%" }}>
         <input
+          disabled={isSubmitting}
           hidden
+          multiple={multiple}
           accept="image/*"
           id={`browse${name}`}
           type="file"
@@ -78,5 +81,6 @@ export declare namespace image {
     name: string;
     label?: string;
     hide?: boolean;
+    multiple?: boolean;
   }
 }

@@ -1,5 +1,6 @@
 import * as Formik from "formik";
 import * as Yup from "yup";
+import * as React from "react";
 import * as Router from "react-router-dom";
 import * as NotiStack from "notistack";
 import * as ReactFire from "reactfire";
@@ -19,6 +20,7 @@ const RegisterValidate = Yup.object().shape({
 });
 
 export const Main = () => {
+  const [open, close] = React.useState(false);
   const secondaryAuth = FirebaseAuth.getAuth(Providers.SecondaryFirebaseApp);
   const secondaryStorage = FirebaseStorage.getStorage(
     Providers.SecondaryFirebaseApp
@@ -26,6 +28,8 @@ export const Main = () => {
   const firestore = ReactFire.useFirestore();
   const navigate = Router.useNavigate();
   const { enqueueSnackbar } = NotiStack.useSnackbar();
+
+  const handleDialog = () => close(!open);
 
   const handleSubmit = async (
     { password, profile, ...values }: register.Form,
@@ -56,14 +60,15 @@ export const Main = () => {
 
       const userDoc = FirebaseFirestore.doc(firestore, `users/${user?.uid}`);
       await FirebaseFirestore.setDoc(userDoc, { ...values });
-      await secondaryAuth.signOut();
-      navigate("success");
+      handleDialog();
+      // await secondaryAuth.signOut();
+      // navigate("verify", { state: { ...values, secondaryAuth } });
     } catch (e) {
       enqueueSnackbar("Email already in use", {
         variant: "error",
       });
     } finally {
-      resetForm();
+      // resetForm();
       setSubmitting(false);
     }
   };
@@ -84,6 +89,12 @@ export const Main = () => {
       {() => (
         <Formik.Form>
           <Pages.Account.Register.Views.Content />
+          {open && (
+            <Pages.Account.Register.Dialogs.MobileVerification
+              secondaryAuth={secondaryAuth}
+              close={handleDialog}
+            />
+          )}
         </Formik.Form>
       )}
     </Formik.Formik>

@@ -6,7 +6,7 @@ export const FormLabel = ({
   label,
   color,
 }: Child & formField.Label) => (
-  <Mui.FormControl component={Mui.Stack} spacing={1} sx={{ minWidth: "100%" }}>
+  <Mui.FormControl component={Mui.Stack} spacing={1} sx={{ width: "100%" }}>
     {label && (
       <Mui.Typography component={Mui.FormLabel} color={color}>
         {label}

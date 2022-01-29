@@ -16,3 +16,86 @@ interface ImportMeta {
 interface Child {
   children: React.ReactNode;
 }
+
+declare namespace User {
+  export interface main {
+    uid: string;
+    profile: string;
+    firstName: string;
+    lastName: string;
+    contact: string;
+    email: string;
+    joined: string;
+    badge: "premium" | "good" | "new";
+    performance: string;
+    ratings: Rating[];
+    skill: Skill[];
+    duty: Duty[];
+  }
+
+  export interface Skill {
+    uid: string;
+    profile: string;
+    name: string;
+    images: string[];
+    title: string;
+    categeory: string;
+    description: string;
+    likes: Like[];
+    followers: Follower[];
+    chats: Message[];
+  }
+
+  export interface Duty {
+    uid: string;
+    profile: string;
+    name: string;
+    images: string[];
+    title: string;
+    categeory: string;
+    description: string;
+    salary: string;
+    starAt: string;
+    endAt: string;
+    createdAt: string;
+    address: string;
+    variant: "duty" | "skill";
+    likes: Like[];
+    bookmarks: Bookmark[];
+    attenders: Follower[];
+    chats: Message[];
+  }
+
+  export interface Rating {
+    uid: string;
+    profile: string;
+    name: string;
+    comment: string;
+    rating: number;
+  }
+
+  export interface Like {
+    uid: string;
+    profile: string;
+    name: string;
+    time: string;
+  }
+
+  export interface Follower {
+    uid: string;
+    profile: string;
+    name: string;
+    time: string;
+  }
+
+  export interface Message {
+    chatId: string;
+    message: string;
+    uid: string;
+    time: string;
+  }
+
+  export interface Bookmark {
+    uid: string;
+  }
+}

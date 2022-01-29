@@ -43,15 +43,15 @@ export const Main = () =>
     },
     {
       path: "account/*",
-      element: (
-        <Routes.Private>
-          <Layouts.Auth.Main />
-        </Routes.Private>
-      ),
+      element: <Layouts.Auth.Main />,
       children: [
         {
           path: "login/*",
-          element: <Pages.Account.Login.Route />,
+          element: (
+            // <Routes.Private>
+            <Pages.Account.Login.Route />
+            // </Routes.Private>
+          ),
         },
         {
           path: "register/*",
@@ -59,11 +59,19 @@ export const Main = () =>
         },
         {
           path: "forget-password/*",
-          element: <Pages.Account.ForgetPassword.Route />,
+          element: (
+            <Routes.Private>
+              <Pages.Account.ForgetPassword.Route />
+            </Routes.Private>
+          ),
         },
         {
           path: "reset-password/*",
-          element: <Pages.Account.ResetPassword.Route />,
+          element: (
+            <Routes.Private>
+              <Pages.Account.ResetPassword.Route />
+            </Routes.Private>
+          ),
         },
       ],
     },
