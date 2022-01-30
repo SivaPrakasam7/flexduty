@@ -106,7 +106,5 @@ export const FeedCard = ({ variant }: card.Props) => {
 };
 
 export declare namespace card {
-  export interface Props {
-    variant: "duty" | "skill";
-  }
+  export type Props = variant;
 }

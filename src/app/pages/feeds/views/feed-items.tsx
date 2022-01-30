@@ -2,7 +2,7 @@ import * as Mui from "@mui/material";
 import * as ReactFire from "reactfire";
 import * as Pages from "src/app/pages";
 
-export const FeedItems = ({ variant }: { variant: "duty" | "skill" }) => {
+export const FeedItems = ({ variant }: variant) => {
   const auth = ReactFire.useSigninCheck();
   return (
     <Mui.Stack

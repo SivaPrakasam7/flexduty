@@ -49,7 +49,6 @@ export declare namespace moreInfo {
   export type Props = (
     | Pages.Feeds.Duty.Views.dutyInfo.Props
     | Pages.Feeds.Skill.Views.skillInfo.Props
-  ) & {
-    variant: "duty" | "skill";
-  };
+  ) &
+    variant;
 }

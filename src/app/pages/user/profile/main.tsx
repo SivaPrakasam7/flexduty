@@ -8,19 +8,12 @@ export const Main = () => (
       <Pages.User.Profile.Views.Content />
     </Mui.Grid>
     <Mui.Grid item xs={12} md={6}>
-      <Pages.User.Profile.Views.BookMarks />
+      <Mui.Typography variant="h6">My Activities</Mui.Typography>
+      <Pages.User.Profile.Views.MyTabs />
     </Mui.Grid>
     <Mui.Grid item xs={12} md={6}>
-      <Pages.User.Profile.Views.Followed />
-    </Mui.Grid>
-    <Mui.Grid item xs={12} md={6}>
-      <Pages.User.Profile.Views.Liked />
-    </Mui.Grid>
-    <Mui.Grid item xs={12} md={6}>
-      <Pages.User.Profile.Views.SkillPost />
-    </Mui.Grid>
-    <Mui.Grid item xs={12} md={6}>
-      <Pages.User.Profile.Views.DutyPost />
+      <Mui.Typography variant="h6">My Surrounds</Mui.Typography>
+      <Pages.User.Profile.Views.MyFollowTabs />
     </Mui.Grid>
     <Router.Outlet />
   </Mui.Grid>

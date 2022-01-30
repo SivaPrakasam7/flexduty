@@ -1,11 +1,9 @@
-import * as Mui from "@mui/material";
-import * as MuiIcons from "@mui/icons-material";
-import * as Components from "src/app/components";
+import * as Pages from "src/app/pages";
 
 export const DutyPost = () => (
-  <Mui.Card>
-    <Mui.CardContent>
-      <Components.StackLabel title="My Duty Post" medium value={""} />
-    </Mui.CardContent>
-  </Mui.Card>
+  <>
+    <Pages.User.Profile.Views.InfoCard variant="duty" myVariant="duty" />
+    <Pages.User.Profile.Views.InfoCard variant="skill" myVariant="duty" />
+    <Pages.User.Profile.Views.InfoCard variant="duty" myVariant="duty" />
+  </>
 );

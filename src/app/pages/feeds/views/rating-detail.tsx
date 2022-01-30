@@ -51,7 +51,5 @@ export const RatingInfo = ({ variant, ...props }: ratingInfo.Props) => (
 );
 
 export declare namespace ratingInfo {
-  export interface Props {
-    variant: "duty" | "skill";
-  }
+  export type Props = variant;
 }

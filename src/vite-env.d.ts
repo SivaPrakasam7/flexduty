@@ -17,6 +17,14 @@ interface Child {
   children: React.ReactNode;
 }
 
+interface variant {
+  variant: "duty" | "skill";
+}
+
+interface myVariant {
+  myVariant: "duty" | "skill" | "bookmark" | "like";
+}
+
 declare namespace User {
   export interface main {
     uid: string;

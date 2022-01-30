@@ -80,13 +80,12 @@ export const Content = () => {
               <Components.StackLabel
                 title="Performance(50%)"
                 value={
-                  <Mui.Stack direction="row" spacing={1}>
-                    <Mui.LinearProgress
-                      color="primary"
-                      variant="determinate"
-                      value={50}
-                    />
-                  </Mui.Stack>
+                  <Mui.LinearProgress
+                    color="primary"
+                    variant="determinate"
+                    value={50}
+                    sx={{ height: 10 }}
+                  />
                 }
                 medium
               />
