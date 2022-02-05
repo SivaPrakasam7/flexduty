@@ -4,9 +4,27 @@ import * as Pages from "src/app/pages";
 import * as Components from "src/app/components";
 
 export const Follower = () => (
-  <Components.StackLabel
-    title="My Followers"
-    medium
-    value={<Mui.Box sx={{ height: 230, overflowY: "auto" }}></Mui.Box>}
-  />
+  <>
+    <Pages.User.Profile.Views.UserCard
+      name="siva"
+      message="hi"
+      status="online"
+      variant="follower"
+      badge="new"
+    />
+    <Pages.User.Profile.Views.UserCard
+      name="siva"
+      message="hi"
+      status="online"
+      variant="follower"
+      badge="new"
+    />
+    <Pages.User.Profile.Views.UserCard
+      name="siva"
+      message="hi"
+      status="online"
+      variant="follower"
+      badge="new"
+    />
+  </>
 );
