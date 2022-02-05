@@ -11,7 +11,8 @@ export const Content = () => (
       name="profile"
       label="Profile"
       hide
-      sx={{ minWidth: 100, height: 100 }}
+      height={100}
+      width={100}
     />
     <Mui.Stack direction="row">
       <Components.Fields.FormField

@@ -42,12 +42,17 @@ export const MobileVerification = ({
       phoneCredential
     );
     await secondaryAuth.signOut();
-    navigate("../success");
+    navigate("success");
   };
   const handleChange = (value: string) => setOtp(value);
 
+  const handleClose = async () => {
+    await secondaryAuth.signOut();
+    navigate("partial-success");
+  };
+
   return (
-    <Components.Dialog icon maxWidth="xs">
+    <Components.Dialog onClose={handleClose} maxWidth="xs">
       <Mui.Stack component={Mui.DialogContent} alignItems="center">
         <Mui.Typography variant="h5" color="primary">
           Mobile No Verfication

@@ -6,12 +6,19 @@ import * as Components from "src/app/components";
 
 export const createEditValidate = Yup.object().shape({
   title: Yup.string().required("No Title provided").trim(),
+  categeory: Yup.string().notOneOf(["0"], "No Categeory provided"),
+  description: Yup.string().required("No Description provided").trim(),
+  salaryFrom: Yup.number().notOneOf([0], "No Starting salary provided"),
+  salaryTo: Yup.number().notOneOf([0], "No Ending salary provided"),
+  startAt: Yup.string().required("No Start Date proviided"),
+  endAt: Yup.string().required("No End Date proviided"),
+  addess: Yup.string().required("No Address proviided"),
 });
 
 export const Main = ({ variant }: createEdit.Props) => {
   const Submit = (
-    values: createEdit.Form,
-    { setSubmitting, resetForm }: Formik.FormikHelpers<createEdit.Form>
+    values: User.Duty,
+    { setSubmitting, resetForm }: Formik.FormikHelpers<User.Duty>
   ) => {
     console.log(values);
     setSubmitting(false);
@@ -26,7 +33,7 @@ export const Main = ({ variant }: createEdit.Props) => {
       </Mui.DialogTitle>
       <Formik.Formik
         initialValues={{
-          images: "",
+          images: null,
           title: "",
           categeory: "0",
           description: "",

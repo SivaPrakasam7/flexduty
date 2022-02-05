@@ -60,7 +60,7 @@ export const Content = () => {
                 value={
                   <Mui.Stack direction="row" alignItems="center">
                     {user?.phoneNumber}
-                    <MuiIcons.Verified color="primary" />
+                    {user?.phoneNumber && <MuiIcons.Verified color="primary" />}
                   </Mui.Stack>
                 }
                 medium

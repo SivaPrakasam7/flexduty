@@ -13,19 +13,29 @@ const toBase64 = (file: Blob) =>
 
 export const ImageSelector = ({
   name,
-  sx,
   label,
   hide,
   multiple,
+  height,
+  width,
 }: image.Props & Mui.CardMediaProps) => {
-  const { setFieldValue, values, errors, touched, isSubmitting } =
-    Formik.useFormikContext<{ [key: string]: string }>();
+  const { setFieldValue, setTouched, values, errors, touched, isSubmitting } =
+    Formik.useFormikContext<{ [key: string]: string[] }>();
   const handleOnChange = async (e: React.FormEvent<HTMLInputElement>) =>
     setFieldValue(
       name,
-      await toBase64((e.target as unknown as { files: Blob[] })?.files[0])
+      await Promise.all(
+        [...(e.target as unknown as { files: Blob[] })?.files]?.map((file) =>
+          toBase64(file)
+        )
+      )
     );
-
+  let widthAlign = { 1: 1, 2: 1, 3: 2, 4: 2 }?.[
+    values[name]?.length > 4 ? 4 : values[name]?.length
+  ];
+  let heightAlign = { 1: 1, 2: 2, 3: 2, 4: 2 }?.[
+    values[name]?.length > 4 ? 4 : values[name]?.length
+  ];
   return (
     <Components.Fields.FormLabel
       label={hide ? undefined : label}
@@ -44,27 +54,72 @@ export const ImageSelector = ({
         />
         <label
           htmlFor={`browse${name}`}
-          style={{ display: "inline-block", width: "fit-content" }}
+          style={{
+            display: "inline-block",
+            height: height,
+            width: width,
+            overflow: "hidden",
+            borderRadius: 5,
+          }}
         >
-          <Mui.Avatar
-            src={values[name]}
-            sx={{
-              cursor: "pointer",
-              textAlign: "center",
-              borderRadius: 2,
-              objectFit: "cover",
-              boxShadow: values[name] && "0px 0px 10px #00000050",
-              border: (theme) =>
-                Boolean(touched[name] && errors[name])
-                  ? `1px solid ${theme.palette.error.main}`
-                  : values[name]
-                  ? undefined
-                  : `1px solid ${theme.palette.grey[400]}`,
-              ...sx,
-            }}
-          >
-            {label}
-          </Mui.Avatar>
+          {!values[name] ? (
+            <Mui.Avatar
+              sx={{
+                cursor: "pointer",
+                textAlign: "center",
+                borderRadius: 2,
+                objectFit: "cover",
+                boxShadow: values[name] && "0px 0px 10px #00000050",
+                border: (theme) =>
+                  Boolean(touched[name] && errors[name])
+                    ? `1px solid ${theme.palette.error.main}`
+                    : values[name]
+                    ? undefined
+                    : `1px solid ${theme.palette.grey[400]}`,
+                heigth: "100%",
+                width: "100%",
+                minHeight: "100%",
+              }}
+            >
+              {label}
+            </Mui.Avatar>
+          ) : (
+            values[name]?.slice(0, 4).map((src, index) => (
+              <Mui.Box sx={{ position: "relative", float: "left" }}>
+                <Mui.Avatar
+                  key={index}
+                  src={src}
+                  sx={{
+                    cursor: "pointer",
+                    textAlign: "center",
+                    borderRadius: 0,
+                    objectFit: "cover",
+                    boxShadow: values[name] && "0px 0px 10px #00000050",
+                    width: (width as number) / (widthAlign || 1),
+                    height: (height as number) / (heightAlign || 1),
+                  }}
+                />
+                {values[name].length > 4 && index === 3 && (
+                  <Mui.Stack
+                    alignItems="center"
+                    justifyContent="center"
+                    sx={{
+                      position: "absolute",
+                      top: 0,
+                      bgcolor: "#00000090",
+                      color: "#fff",
+                      width: (width as number) / (widthAlign || 1),
+                      height: (height as number) / (heightAlign || 1),
+                    }}
+                  >
+                    <Mui.Typography variant="body1">{`+${
+                      values[name].length - 4
+                    } more`}</Mui.Typography>
+                  </Mui.Stack>
+                )}
+              </Mui.Box>
+            ))
+          )}
         </label>
       </Mui.Box>
       {Boolean(touched[name] && errors[name]) && (
@@ -82,5 +137,7 @@ export declare namespace image {
     label?: string;
     hide?: boolean;
     multiple?: boolean;
+    height: string | number;
+    width: string | number;
   }
 }

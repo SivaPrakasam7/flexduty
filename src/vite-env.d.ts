@@ -55,23 +55,24 @@ declare namespace User {
   }
 
   export interface Duty {
-    uid: string;
-    profile: string;
-    name: string;
-    images: string[];
+    uid?: string;
+    profile?: string;
+    name?: string;
+    images: string[] | null;
     title: string;
     categeory: string;
     description: string;
-    salary: string;
-    starAt: string;
+    salaryFrom: number;
+    salaryTo: number;
+    startAt: string;
     endAt: string;
-    createdAt: string;
+    createdAt?: string;
     address: string;
-    variant: "duty" | "skill";
-    likes: Like[];
-    bookmarks: Bookmark[];
-    attenders: Follower[];
-    chats: Message[];
+    variant?: "duty" | "skill";
+    likes?: Like[];
+    bookmarks?: Bookmark[];
+    attenders?: Follower[];
+    chats?: Message[];
   }
 
   export interface Rating {

@@ -10,9 +10,11 @@ export const Content = ({
       <Mui.Grid item xs={12} md={6}>
         <Components.Fields.ImageSelector
           hide
+          multiple
           label="Upload Image"
           name="images"
-          sx={{ minWidth: "100%", width: 250, height: 150 }}
+          width={250}
+          height={150}
         />
       </Mui.Grid>
       <Mui.Grid item xs={12} md={6} container spacing={1}>

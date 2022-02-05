@@ -42,11 +42,11 @@ export const Main = () => {
           )
           .then(() => {
             console.log("Email Verified");
-            return true;
+            return false;
           })
           .catch(() => {
             enqueueSnackbar("Invalid verification link", { variant: "error" });
-            return false;
+            return true;
           });
         if (check) return;
       }

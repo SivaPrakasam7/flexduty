@@ -2,11 +2,21 @@ import * as Mui from "@mui/material";
 import * as Router from "react-router-dom";
 import * as Components from "src/app/components";
 
-export const Success = ({ warning }: { warning?: boolean }) => (
+export const Success = ({
+  warning,
+  partial,
+}: {
+  warning?: boolean;
+  partial?: boolean;
+}) => (
   <Components.Dialog icon maxWidth="xs">
     <Mui.Stack component={Mui.DialogContent} alignItems="center">
       <Mui.Typography variant="h5" color="primary">
-        {warning ? "Email verification required" : "Registration Successfull!"}
+        {warning
+          ? "Email verification required"
+          : partial
+          ? "Partial Registration Successfull!"
+          : "Registration Successfull!"}
       </Mui.Typography>
       <Mui.Typography
         variant="body1"

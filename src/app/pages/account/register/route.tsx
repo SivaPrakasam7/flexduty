@@ -8,11 +8,11 @@ export const Route = () =>
       element: <Pages.Account.Register.Main />,
       children: [
         {
-          path: "verify",
-          element: <Pages.Account.Register.Dialogs.MobileVerification />,
+          path: "success",
+          element: <Pages.Account.Register.Dialogs.Success />,
         },
         {
-          path: "success",
+          path: "partial-success",
           element: <Pages.Account.Register.Dialogs.Success />,
         },
       ],
