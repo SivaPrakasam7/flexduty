@@ -63,8 +63,5 @@ export const SkillInfo = ({ profile = "", name }: skillInfo.Props) => (
 );
 
 export declare namespace skillInfo {
-  export interface Props {
-    profile?: string;
-    name: string;
-  }
+  export type Props = Required<Pick<User.Skill, "profile" | "name">>;
 }

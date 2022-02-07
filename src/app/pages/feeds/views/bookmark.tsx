@@ -4,7 +4,8 @@ import * as React from "react";
 
 export const Bookmark = ({
   disabled,
-}: Pick<Mui.IconButtonProps, "disabled">) => {
+  id,
+}: Pick<Mui.IconButtonProps, "disabled"> & { id: string }) => {
   const [mark, setMark] = React.useState(false);
   const handleClick = () => setMark(!mark);
 

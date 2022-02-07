@@ -6,6 +6,7 @@ import * as Pages from "src/app/pages";
 import * as Hooks from "src/app/hooks";
 
 export const FeedCard = ({
+  id,
   variant,
   title,
   categeory,
@@ -95,7 +96,7 @@ export const FeedCard = ({
               />
             ))}
           </Mui.Box> */}
-          <Pages.Feeds.Views.FeedItems variant={variant} />
+          <Pages.Feeds.Views.FeedItems variant={variant} id={id as string} />
         </Mui.Grid>
         <Mui.CardContent
           component={Mui.Grid}
@@ -137,20 +138,10 @@ export const FeedCard = ({
             </Mui.Stack>
             <Mui.Typography variant="body1">{description}</Mui.Typography>
             <Pages.Feeds.Views.MoreInfo
-              profile={profile}
+              profile={profile as string}
               variant={variant}
               name={name as string}
-              amountRange={`${props?.salaryFrom} - ${props?.salaryTo}`}
-              timeRange={`${new Date(
-                (
-                  props?.startAt as unknown as FirebaseFirestore.Timestamp
-                )?.toDate()
-              ).toLocaleDateString()} - ${new Date(
-                (
-                  props?.endAt as unknown as FirebaseFirestore.Timestamp
-                )?.toDate()
-              ).toLocaleDateString()}`}
-              address={props?.address}
+              {...props}
             />
           </Mui.Stack>
         </Mui.CardContent>

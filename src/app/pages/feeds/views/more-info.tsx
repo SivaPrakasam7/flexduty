@@ -31,8 +31,16 @@ export const MoreInfo = ({ variant, ...props }: moreInfo.Props) => {
       <Mui.Collapse in={open}>
         {auth?.data?.signedIn ? (
           {
-            duty: <Pages.Feeds.Duty.Views.DutyInfo {...props} />,
-            skill: <Pages.Feeds.Skill.Views.SkillInfo {...props} />,
+            duty: (
+              <Pages.Feeds.Duty.Views.DutyInfo
+                {...(props as Pages.Feeds.Duty.Views.dutyInfo.Props)}
+              />
+            ),
+            skill: (
+              <Pages.Feeds.Skill.Views.SkillInfo
+                {...(props as Pages.Feeds.Skill.Views.skillInfo.Props)}
+              />
+            ),
           }[variant]
         ) : (
           <Components.SignInBlocker sx={{ height: 150 }} />
