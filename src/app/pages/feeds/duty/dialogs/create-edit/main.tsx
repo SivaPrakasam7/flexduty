@@ -1,7 +1,12 @@
 import * as Mui from "@mui/material";
 import * as Formik from "formik";
 import * as Yup from "yup";
+import * as ReactFire from "reactfire";
+import * as Notistack from "notistack";
+import * as FirebaseFirestore from "firebase/firestore";
+import * as Router from "react-router-dom";
 import * as Pages from "src/app/pages";
+import * as Hooks from "src/app/hooks";
 import * as Components from "src/app/components";
 
 export const createEditValidate = Yup.object().shape({
@@ -12,17 +17,51 @@ export const createEditValidate = Yup.object().shape({
   salaryTo: Yup.number().notOneOf([0], "No Ending salary provided"),
   startAt: Yup.string().required("No Start Date proviided"),
   endAt: Yup.string().required("No End Date proviided"),
-  addess: Yup.string().required("No Address proviided"),
+  address: Yup.string().required("No Address proviided"),
 });
 
 export const Main = ({ variant }: createEdit.Props) => {
-  const Submit = (
-    values: User.Duty,
+  const navigate = Router.useNavigate();
+  const firestore = ReactFire.useFirestore();
+  const GetImageUrl = Hooks.useImageUrl;
+  const { data: user } = ReactFire.useUser();
+  const { enqueueSnackbar } = Notistack.useSnackbar();
+  const Submit = async (
+    { images, ...values }: User.Duty,
     { setSubmitting, resetForm }: Formik.FormikHelpers<User.Duty>
   ) => {
-    console.log(values);
-    setSubmitting(false);
-    resetForm();
+    try {
+      let imageLinks;
+      if (images) {
+        imageLinks = await Promise.all(
+          images?.map((image) =>
+            GetImageUrl(image, `${user?.uid}/duty/${new Date().getTime()}_duty`)
+          )
+        );
+      }
+      const dutyDoc = FirebaseFirestore.collection(
+        firestore,
+        `users/${user?.uid}/duty`
+      );
+      await FirebaseFirestore.addDoc(dutyDoc, {
+        ...values,
+        images: images ? imageLinks : images,
+        uid: user?.uid,
+        profile: user?.photoURL,
+        name: user?.displayName,
+        createdAt: new Date(),
+      });
+      navigate(-1);
+    } catch (e: any) {
+      console.log(e);
+      enqueueSnackbar(e.message, {
+        variant: "error",
+      });
+    } finally {
+      console.log(values);
+      setSubmitting(false);
+      resetForm();
+    }
   };
   return (
     <Components.Dialog icon>
@@ -39,8 +78,8 @@ export const Main = ({ variant }: createEdit.Props) => {
           description: "",
           salaryFrom: 0,
           salaryTo: 0,
-          startAt: "",
-          endAt: "",
+          startAt: new Date(),
+          endAt: new Date(),
           address: "",
         }}
         validationSchema={createEditValidate}
@@ -61,16 +100,5 @@ export const Main = ({ variant }: createEdit.Props) => {
 export declare namespace createEdit {
   export interface Props {
     variant: "create" | "edit";
-  }
-  export interface Form {
-    images: string;
-    title: string;
-    categeory: string;
-    description: string;
-    salaryFrom: number;
-    salaryTo: number;
-    startAt: string;
-    endAt: string;
-    address: string;
   }
 }

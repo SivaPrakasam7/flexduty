@@ -42,19 +42,22 @@ declare namespace User {
   }
 
   export interface Skill {
-    uid: string;
-    profile: string;
-    name: string;
-    images: string[];
+    id?: string;
+    uid?: string;
+    profile?: string;
+    name?: string;
+    images: string[] | null;
     title: string;
     categeory: string;
     description: string;
-    likes: Like[];
-    followers: Follower[];
-    chats: Message[];
+    createdAt?: Date;
+    likes?: Like[];
+    followers?: Follower[];
+    chats?: Message[];
   }
 
   export interface Duty {
+    id?: string;
     uid?: string;
     profile?: string;
     name?: string;
@@ -64,11 +67,10 @@ declare namespace User {
     description: string;
     salaryFrom: number;
     salaryTo: number;
-    startAt: string;
-    endAt: string;
-    createdAt?: string;
+    startAt: Date;
+    endAt: Date;
+    createdAt?: Date;
     address: string;
-    variant?: "duty" | "skill";
     likes?: Like[];
     bookmarks?: Bookmark[];
     attenders?: Follower[];

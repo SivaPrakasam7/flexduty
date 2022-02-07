@@ -19,7 +19,7 @@ export const ImageSelector = ({
   height,
   width,
 }: image.Props & Mui.CardMediaProps) => {
-  const { setFieldValue, setTouched, values, errors, touched, isSubmitting } =
+  const { setFieldValue, values, errors, touched, isSubmitting } =
     Formik.useFormikContext<{ [key: string]: string[] }>();
   const handleOnChange = async (e: React.FormEvent<HTMLInputElement>) =>
     setFieldValue(
@@ -85,9 +85,8 @@ export const ImageSelector = ({
             </Mui.Avatar>
           ) : (
             values[name]?.slice(0, 4).map((src, index) => (
-              <Mui.Box sx={{ position: "relative", float: "left" }}>
+              <Mui.Box sx={{ position: "relative", float: "left" }} key={index}>
                 <Mui.Avatar
-                  key={index}
                   src={src}
                   sx={{
                     cursor: "pointer",

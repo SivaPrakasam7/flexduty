@@ -60,5 +60,15 @@ export const Components = (): Pick<Mui.ThemeOptions, "components"> => ({
         },
       },
     },
+    MuiSelect: {
+      defaultProps: {
+        MenuProps: {
+          sx: {
+            "& .MuiPaper-root": { bgcolor: "background.default" },
+            maxHeight: 300,
+          },
+        },
+      },
+    },
   },
 });

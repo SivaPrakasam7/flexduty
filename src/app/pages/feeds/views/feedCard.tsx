@@ -1,16 +1,26 @@
 import * as Mui from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
 import * as React from "react";
+import * as FirebaseFirestore from "firebase/firestore";
 import * as Pages from "src/app/pages";
 import * as Hooks from "src/app/hooks";
-import * as Assets from "src/assets";
 
-export const FeedCard = ({ variant }: card.Props) => {
+export const FeedCard = ({
+  variant,
+  title,
+  categeory,
+  images,
+  createdAt,
+  description,
+  name,
+  profile,
+  ...props
+}: card.Props) => {
   const isMobile = Hooks.useMobile();
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   return (
-    <Mui.Card sx={{ maxHeight: { md: 400 }, maxWidth: "md" }}>
+    <Mui.Card sx={{ maxHeight: { sm: 350, md: 400 }, maxWidth: "md" }}>
       <Mui.Grid container maxHeight="inherit">
         <Mui.Grid
           item
@@ -34,11 +44,11 @@ export const FeedCard = ({ variant }: card.Props) => {
             }}
           >
             <Mui.Typography variant="h6" color="primary" noWrap>
-              Main Title
+              {title}
             </Mui.Typography>
             <Mui.Stack direction="row" spacing={1} justifyContent="center">
               <Mui.Typography variant="caption" color="primary">
-                Categeory
+                {categeory}
               </Mui.Typography>
               {
                 {
@@ -48,7 +58,43 @@ export const FeedCard = ({ variant }: card.Props) => {
               }
             </Mui.Stack>
           </Mui.Stack>
-          <Mui.CardMedia component="img" src={Assets.CatImage} />
+          {images && (
+            <Mui.ImageList
+              sx={{
+                width: "100%",
+                height: { xs: 250, sm: "100%" },
+                m: 0,
+                scrollbarWidth: "none",
+              }}
+              variant="quilted"
+              rowHeight={400}
+              gap={1}
+              cols={1}
+            >
+              {images.map((image, index) => (
+                <Mui.ImageListItem key={index}>
+                  <Mui.CardMedia component="img" src={image} loading="lazy" />
+                </Mui.ImageListItem>
+              ))}
+            </Mui.ImageList>
+          )}
+          {/* <Mui.Box
+            sx={{
+              overflowX: "auto",
+              width: "inherit",
+              display: "flex",
+              height: "100%",
+            }}
+          >
+            {images?.map((image, index) => (
+              <Mui.CardMedia
+                key={index}
+                component="img"
+                src={image}
+                sx={{ minHeight: { xs: 100, sm: "100%", float: "left" } }}
+              />
+            ))}
+          </Mui.Box> */}
           <Pages.Feeds.Views.FeedItems variant={variant} />
         </Mui.Grid>
         <Mui.CardContent
@@ -64,7 +110,7 @@ export const FeedCard = ({ variant }: card.Props) => {
               justifyContent="space-between"
               alignItems="center"
             >
-              <Mui.Typography variant="h6">Main Title</Mui.Typography>
+              <Mui.Typography variant="h6">{title}</Mui.Typography>
               {
                 {
                   duty: <MuiIcons.Work color="primary" />,
@@ -79,24 +125,32 @@ export const FeedCard = ({ variant }: card.Props) => {
               alignItems="center"
             >
               <Mui.Typography variant="subtitle1" color="text.secondary">
-                Categeory
+                {categeory}
               </Mui.Typography>
               <Mui.Typography variant="caption" color="text.secondary">
-                {new Date().toLocaleString()}
+                {new Date(
+                  (
+                    createdAt as unknown as FirebaseFirestore.Timestamp
+                  )?.toDate()
+                ).toLocaleString()}
               </Mui.Typography>
             </Mui.Stack>
-
-            <Mui.Typography variant="body1">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis ipsa possimus veniam saepe nesciunt quaerat accusamus
-              eligendi sint explicabo quo.
-            </Mui.Typography>
+            <Mui.Typography variant="body1">{description}</Mui.Typography>
             <Pages.Feeds.Views.MoreInfo
+              profile={profile}
               variant={variant}
-              name="Siva"
-              amountRange="$100 - 200"
-              timeRange="10am - 7pm"
-              address="Some address"
+              name={name as string}
+              amountRange={`${props?.salaryFrom} - ${props?.salaryTo}`}
+              timeRange={`${new Date(
+                (
+                  props?.startAt as unknown as FirebaseFirestore.Timestamp
+                )?.toDate()
+              ).toLocaleDateString()} - ${new Date(
+                (
+                  props?.endAt as unknown as FirebaseFirestore.Timestamp
+                )?.toDate()
+              ).toLocaleDateString()}`}
+              address={props?.address}
             />
           </Mui.Stack>
         </Mui.CardContent>
@@ -106,5 +160,5 @@ export const FeedCard = ({ variant }: card.Props) => {
 };
 
 export declare namespace card {
-  export type Props = variant;
+  export type Props = variant & (User.Duty | User.Skill);
 }

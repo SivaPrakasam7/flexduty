@@ -40,7 +40,6 @@ export const Main = () => {
       if (profile) {
         profileLink = await GetImageUrl(profile[0], user?.uid);
       }
-      console.log(profileLink);
       await FirebaseAuth.sendEmailVerification(user);
       await FirebaseAuth.updateProfile(user, {
         displayName: `${values.firstName} ${values.lastName}`,
